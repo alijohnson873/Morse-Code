@@ -1,4 +1,4 @@
-const morseKey = {
+const engToMorseKey = {
   "0": "-----",
   "1": ".----",
   "2": "..---",
@@ -47,9 +47,15 @@ const morseKey = {
   " ": "/"
 };
 
-//Word to Morse
+const engToMorseForm = document.getElementById("engToMorseForm");
+const morseToEngForm = document.getElementById("morseToEngForm");
+const engInput = document.getElementById("engInput");
+const morseInput = document.getElementById("morseInput");
+const translationOutput = document.getElementById("translationOutput");
+const h1Test = document.getElementById("h1Test");
+
 const letterToMorse = letter => {
-  return morseKey[letter];
+  return engToMorseKey[letter];
 };
 const wordToMorse = word => {
   let morse = "";
@@ -59,23 +65,34 @@ const wordToMorse = word => {
   return morse;
 };
 
-//Morse to Word
-const morseToLetter = (object, value) => {
-  return Object.keys(object).find(key => object[key] === value);
+const morseToLetter = (object, morseLetter) => {
+  return Object.keys(object).find(key => object[key] === morseLetter);
 };
-const splitString = string => {
+const splitStringBySpace = string => {
   return (arr = string.split(" "));
 };
 
 const morseToWord = morse => {
-  let morseArr = splitString(morse);
+  let morseArr = splitStringBySpace(morse);
   let wordArr = [];
   for (let i = 0; i < morseArr.length; i += 1) {
-    wordArr.push(morseToLetter(morseKey, morseArr[i]));
+    wordArr.push(morseToLetter(engToMorseKey, morseArr[i]));
   }
   return wordArr.join("");
 };
 
-// console.log(morseToLetter(morseKey, "--.."));
+engToMorseForm.addEventListener("submit", event => {
+  event.preventDefault();
+  console.log(engInput.value);
+  translationOutput.innerText = wordToMorse(engInput.value.toLowerCase());
+  engInput.value = "";
+});
 
-module.exports = letterToMorse;
+morseToEngForm.addEventListener("submit", event => {
+  event.preventDefault();
+  console.log(morseInput.value);
+  translationOutput.innerText = morseToWord(morseInput.value);
+  morseInput.value = "";
+});
+
+// export { letterToMorse, wordToMorse, morseToWord, morseToLetter };

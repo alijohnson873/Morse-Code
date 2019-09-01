@@ -4,10 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Morse Code</title>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <title>Morse Code Translator</title>
   </head>
   <body>
-    <header><h1>Morse code</h1></header>
+    <header><h1 id="h1Test">Morse code translator</h1></header>
+
+    <!-- <h3>English to MorseCode</h3> -->
+
+    <form id="engToMorseForm">
+      <textarea
+        type="text"
+        id="engInput"
+        placeholder="Enter english here..."
+      ></textarea>
+      <input type="submit" />
+    </form>
+    <form id="morseToEngForm">
+      <textarea
+        type="text"
+        id="morseInput"
+        placeholder="Enter morse code here..."
+      ></textarea>
+      <input type="submit" />
+    </form>
+
+    <article>
+      <h3 id="translationOutput"></h3>
+    </article>
+
     <script type="text/javascript" src="main.js"></script>
   </body>
 </html>
