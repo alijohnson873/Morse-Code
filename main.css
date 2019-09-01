@@ -19,3 +19,22 @@ textarea {
   font-size: 30px;
   margin: 30px;
 }
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 40px;
+    margin: 10px;
+  }
+
+  textarea {
+    width: 70vw;
+    height: 60px;
+    font-size: 30px;
+    margin: 30px;
+  }
+
+  #translationOutput {
+    font-size: 40px;
+    margin: 20px;
+  }
+}
